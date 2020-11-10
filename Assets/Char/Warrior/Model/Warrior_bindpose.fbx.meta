@@ -140,12 +140,7 @@ ModelImporter:
     9500000: //RootNode
     13700000: Warrior_Body
     13700002: Warrior_Weapon
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert26SG
-    second: {fileID: 2100000, guid: f5c5dbbff2d9ef142ac545f2c20f7077, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
