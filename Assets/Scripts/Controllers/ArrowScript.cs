@@ -15,7 +15,6 @@ public class ArrowScript : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         transform = gameObject.GetComponent<Transform>();
 
-        Debug.Log("*********************arise");
 
     }
 
@@ -32,7 +31,9 @@ public class ArrowScript : MonoBehaviour
             }
 
             if(col.gameObject.tag != "Enemy"){
-                Object.Destroy(gameObject, 2.0f);
+                // Object.Destroy(gameObject, 2.0f);
+            } else {
+                Object.Destroy(gameObject);
             }
         }
 
@@ -40,10 +41,10 @@ public class ArrowScript : MonoBehaviour
 
         // if(Input.GetKeyDown("Fire1")){
         //     Debug.Log("hit");
-            // if(col.GetComponent<EnemyStats>()){
-            //     EnemyStats stats = col.GetComponent<EnemyStats>();
-            //     stats.Hit(damage);
-            // }
+            if(col.gameObject.GetComponent<EnemyStats>()){
+                EnemyStats stats = col.gameObject.GetComponent<EnemyStats>();
+                stats.TakeDamage(damage);
+            }
         // }
     }
 

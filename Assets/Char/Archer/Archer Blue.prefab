@@ -12,6 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6320482f7ca97b64597bab3fce085825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chargeMax: 100
+  chargeRate: 80
+  spawn: {fileID: 0}
+  arrowObj: {fileID: 7716774245105008995, guid: e12f67aa396803b4db1f156b4de6a91f,
+    type: 3}
+--- !u!114 &717852938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4506006686708116928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b040394a3a400eb40833cd2aef1db3b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage:
+    baseVal: 100
 --- !u!1001 &8241441085479741836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,6 +134,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1053a69e8ac1bd7458d5d6959df1cf68, type: 2}
+    - target: {fileID: 9127210239390274919, guid: f7e6e31c5324d874db515c8ca4922190,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3dbc1b57c0317754fa78d6364a770b17, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7e6e31c5324d874db515c8ca4922190, type: 3}
 --- !u!1 &4506006686708116928 stripped

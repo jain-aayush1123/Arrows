@@ -29,7 +29,9 @@ public class EnemyWarriorController : MonoBehaviour
         float distance = Vector3.Distance(target.position, transform.position);
         if(distance <= attackRadius && !deliveredAttack){
             deliveredAttack = true;
-              anim.Play("Warrior_Attack");
+            CharStats stats = target.GetComponent<CharStats>();
+            anim.Play("Warrior_Attack");
+            stats.TakeDamage(100);
         }
     }
 }
