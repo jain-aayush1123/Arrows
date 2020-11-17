@@ -31,7 +31,7 @@ public class ArrowScript : MonoBehaviour
             }
 
             if(col.gameObject.tag != "Enemy"){
-                // Object.Destroy(gameObject, 2.0f);
+                Object.Destroy(gameObject, 2.0f);
             } else {
                 Object.Destroy(gameObject);
             }

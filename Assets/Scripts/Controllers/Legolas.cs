@@ -10,6 +10,12 @@ public class Legolas : MonoBehaviour
     public float chargeRate;
     string fireButton = "Fire1";
     bool isDrawPlaying = false;
+    private float thresholdCharge = 30;
+
+
+    private bool cooldown = false;
+    private float cooldownTime = 1f;
+
 
     public Transform spawn;
     public Rigidbody arrowObj;
@@ -21,29 +27,45 @@ public class Legolas : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetButton(fireButton.ToString()) && _charge < chargeMax){
-            Debug.Log("DOWN");
+        if ( cooldown == false ) {
+            Invoke("ResetCooldown", cooldownTime);
+                 // cooldown = true;
 
-            _charge += Time.deltaTime * chargeRate;
-            if(!isDrawPlaying){
-                isDrawPlaying = true;
-            anim.SetTrigger("DrawBow");
 
+            if(Input.GetButton(fireButton.ToString()) && _charge < chargeMax){
+                Debug.Log("DOWN");
+
+                _charge += Time.deltaTime * chargeRate;
+                if(!isDrawPlaying){
+                    isDrawPlaying = true;
+                anim.SetTrigger("DrawBow");
+
+                }
+                Debug.Log(_charge.ToString());
             }
-            Debug.Log(_charge.ToString());
-        }
 
-        if(Input.GetButtonUp(fireButton.ToString())){
-            Debug.Log(_charge.ToString());
-              anim.Play("Archer_attack_recoil");
+
+
+            if(Input.GetButtonUp(fireButton.ToString())){
+                Debug.Log(_charge.ToString());
                 isDrawPlaying = false;
-            Rigidbody arrow = Instantiate(arrowObj, spawn.position, Quaternion.identity) as Rigidbody;
-            arrow.AddForce(spawn.forward * _charge, ForceMode.Impulse);
+                if(_charge > thresholdCharge){
+                    anim.Play("Archer_attack_recoil");
+                    Rigidbody arrow = Instantiate(arrowObj, spawn.position, Quaternion.identity) as Rigidbody;
+                    arrow.AddForce(spawn.forward * _charge, ForceMode.Impulse);
+                } else {
+                    anim.Play("Archer_Idle");
+                }
 
+                _charge = 0;
 
-
-            _charge = 0;
-            Debug.Log("UP");
+                Debug.Log("UP");
+            }
         }
+
+    }
+
+    void ResetCooldown(){
+     cooldown = false;
     }
 }
