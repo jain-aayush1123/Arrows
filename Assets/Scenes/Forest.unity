@@ -4021,6 +4021,11 @@ PrefabInstance:
       propertyPath: aimCamera
       value: 
       objectReference: {fileID: 283200862}
+    - target: {fileID: 2197009339498504128, guid: 93ddf5fff26bcb642a6f1f94462963b2,
+        type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 165552008}
     - target: {fileID: 4506006686708116928, guid: 93ddf5fff26bcb642a6f1f94462963b2,
         type: 3}
       propertyPath: m_Name

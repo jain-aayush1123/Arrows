@@ -12,6 +12,8 @@ public class Legolas : MonoBehaviour
     bool isDrawPlaying = false;
     private float thresholdCharge = 30;
 
+    public float turningRate = 3600000f;
+
 
     private bool cooldown = false;
     private float cooldownTime = 1f;
@@ -22,12 +24,11 @@ public class Legolas : MonoBehaviour
 
     public Rigidbody arrowObj;
     private Animator anim;
-    private Transform myTransform;
+    public Transform character;
 
      void Start()
     {
         anim = GetComponent<Animator>();
-        myTransform  = GetComponent<Transform>();
     }
 
     void Update(){
@@ -35,16 +36,18 @@ public class Legolas : MonoBehaviour
             Invoke("ResetCooldown", cooldownTime);
                  // cooldown = true;
 
-            myTransform.forward = aimCamera.forward;
 
-            if(Input.GetButton(fireButton.ToString()) && _charge < chargeMax){
+            if(Input.GetButton(fireButton.ToString())){
                 Debug.Log("DOWN");
+                character.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0),  100f);
 
-                _charge += Time.deltaTime * chargeRate;
                 if(!isDrawPlaying){
                     isDrawPlaying = true;
-                anim.SetTrigger("DrawBow");
+                    anim.SetTrigger("DrawBow");
+                }
 
+                if(_charge < chargeMax){
+                  _charge += Time.deltaTime * chargeRate;
                 }
                 Debug.Log(_charge.ToString());
             }
@@ -57,6 +60,7 @@ public class Legolas : MonoBehaviour
                 if(_charge > thresholdCharge){
                     anim.Play("Archer_attack_recoil");
                     Rigidbody arrow = Instantiate(arrowObj, spawn.position, Quaternion.identity) as Rigidbody;
+                    arrow.transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
                     arrow.AddForce(spawn.forward * _charge, ForceMode.Impulse);
                 } else {
                     anim.Play("Archer_Idle");
