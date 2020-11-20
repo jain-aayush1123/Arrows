@@ -18,12 +18,16 @@ public class Legolas : MonoBehaviour
 
 
     public Transform spawn;
+    public Transform aimCamera;
+
     public Rigidbody arrowObj;
     private Animator anim;
+    private Transform myTransform;
 
      void Start()
     {
         anim = GetComponent<Animator>();
+        myTransform  = GetComponent<Transform>();
     }
 
     void Update(){
@@ -31,6 +35,7 @@ public class Legolas : MonoBehaviour
             Invoke("ResetCooldown", cooldownTime);
                  // cooldown = true;
 
+            myTransform.forward = aimCamera.forward;
 
             if(Input.GetButton(fireButton.ToString()) && _charge < chargeMax){
                 Debug.Log("DOWN");
