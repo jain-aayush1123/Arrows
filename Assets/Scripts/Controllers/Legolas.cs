@@ -39,8 +39,8 @@ public class Legolas : MonoBehaviour
 
             if(Input.GetButton(fireButton.ToString())){
                 Debug.Log("DOWN");
-                character.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0),  100f);
 
+                character.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0),  100f);
                 if(!isDrawPlaying){
                     isDrawPlaying = true;
                     anim.SetTrigger("DrawBow");
