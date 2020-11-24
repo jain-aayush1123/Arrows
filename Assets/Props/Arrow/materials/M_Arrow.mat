@@ -152,7 +152,7 @@ Material:
     - _Color: {r: 0.45283014, g: 0.45283014, b: 0.45283014, a: 1}
     - _ColorAddSubDiff: {r: -1, g: 0, b: 0, a: 0}
     - _ColorTint: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.4716981, g: 0.916735, b: 1, a: 1}
+    - _EmissionColor: {r: 0.990566, g: 0.8503916, b: 0.2896938, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
